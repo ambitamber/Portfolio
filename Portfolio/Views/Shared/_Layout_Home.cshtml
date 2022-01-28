@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Portfolio.styles.css" asp-append-version="true" />
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caesar+Dressing|Open+Sans+Condensed:300" />
+
+    <!-- Local css files -->
+    <link rel="stylesheet" href="~/css/MainStyles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/component.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+
+</head>
+<body>
+
+    @RenderBody()
+
+</body>
+
+<!-- auto typing script -->
+<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+
+<!-- local js scripts-->
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/mainPagescript.js" asp-append-version="true"></script>
+
+
+<!--for modal animations-->
+<!-- classie.js by desandro: https://github.com/desandro/classie -->
+<script src="~/js/classie.js" asp-append-version="true"></script>
+<script src="/js/modalEffects.js" asp-append-version="true"></script>
+
+<!-- PDF viewer script-->
+<script src="https://unpkg.com/pdfobject@2.2.7/pdfobject.min.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+<script>
+    PDFObject.embed("./Content/Resume.pdf", "#mypdfviewer");
+</script>
+
+</html>
