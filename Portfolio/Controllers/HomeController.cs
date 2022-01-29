@@ -33,7 +33,7 @@ namespace Portfolio.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [HttpGet]
         public IActionResult Portfolio()
         {
             ViewData["Title"] = "Ambi";

@@ -21,24 +21,40 @@ setTimeout(function () {
 }, delaySeconds);
 
 let sendBtn = document.getElementById('send-btn');
+let confirm = document.getElementById('confirm');
 sendBtn.onclick = function () {
-    document.getElementById('confirm').style.display = "block"
+    confirm.style.display = "block"
 }
 
-
+var check = false;
+var newd = new Date();
+var oldd = new Date();
 function PostInfo() {
-    var messageinfo = {
-        Name: $("#NameFormControlInput").val(),
-        Email: $("#FormControlInput").val(),
-        Message: $("#FormControlTextarea").val()
-    };
-    $.ajax({
-        type: "POST",
-        url: "Home/Index",
-        contentType: "application/json",
-        dataType: 'json',
-        data: messageinfo
-    });
+
+    if(check) {
+        confirm.innerHTML = "Message is already send."
+        oldd.setSeconds(oldd.getSeconds + 25)
+        if (newd < oldd){
+            check = false;
+        }
+    } 
+    else {
+        var messageinfo = {
+            Name: $("#NameFormControlInput").val(),
+            Email: $("#FormControlInput").val(),
+            Message: $("#FormControlTextarea").val()
+        };
+        $.ajax({
+            type: "POST",
+            url: "Home/Index",
+            contentType: "application/json",
+            dataType: 'json',
+            data: messageinfo
+        });
+        check = true;
+        oldd.setSeconds(oldd.getSeconds - 50)
+    }
+
 }
 
 function clearMessageForm() {
