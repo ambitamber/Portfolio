@@ -18,6 +18,7 @@ var ModalEffects = (function() {
 
 			var modal = document.querySelector( '#' + el.getAttribute( 'data-modal' ) ),
 				close = modal.querySelector( '.md-close' );
+				snclose = modal.querySelector( '.sn-close')
 
 			function removeModal( hasPerspective ) {
 				classie.remove( modal, 'md-show' );
@@ -47,13 +48,24 @@ var ModalEffects = (function() {
 				document.getElementById('confirm').style.display = "none";
 			}
 
+			function clearMessageForm() {
+				document.getElementById('FormControlInput').value = '';
+				document.getElementById('FormControlTextarea').value = '';
+			}
+
 			close.addEventListener( 'click', function( ev ) {
 				ev.stopPropagation();
 				removeModalHandler();
 				removeConfirm();
+				clearMessageForm();
 			});
 
-			
+			snclose.addEventListener( 'click', function( ev ) {
+				ev.stopPropagation();
+				removeModalHandler();
+				removeConfirm();
+				clearMessageForm();
+			});
 		} );
 
 	}
